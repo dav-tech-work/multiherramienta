@@ -1,0 +1,38 @@
+<header class="header">
+    <div class="contenedor-header">
+      
+      <!-- 🔷 Logo / Nombre del Proyecto -->
+      <a href="/" class="logo">SysTools</a>
+  
+      <!-- 🔧 Enlaces a herramientas (sección pública) -->
+      <nav class="menu-principal">
+        <a href="#ver-ip">Ver IP</a>
+        <a href="#escanear">Escanear Red</a>
+        <!-- A futuro -->
+        <!-- <a href="#whois">WHOIS</a> -->
+        <!-- <a href="#dns">DNS</a> -->
+      </nav>
+  
+      <!-- ⚙️ Controles del usuario -->
+      <div class="acciones-usuario">
+  
+        <!-- 🌐 Selector de idioma -->
+        <button id="selector-idioma" title="Idioma" aria-label="Seleccionar idioma">🌐</button>
+  
+        <!-- 🌓 Botón tema oscuro/claro -->
+        <button id="toggle-tema" title="Tema" aria-label="Cambiar tema">🌓</button>
+  
+        <!-- 👤 Autenticación (solo si estás logueado o no) -->
+        <% if (usuario) { %>
+          <a href="/dashboard" class="btn-usuario"><%= usuario.nombre %></a>
+          <form action="/logout" method="POST" class="logout-form">
+            <button type="submit" title="Cerrar sesión" class="btn-logout">⏻</button>
+          </form>
+        <% } else { %>
+          <a href="/login" class="btn-login">Iniciar sesión</a>
+        <% } %>
+  
+      </div>
+    </div>
+  </header>
+  

@@ -1,0 +1,25 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title><%= titulo || 'SysTools' %></title>
+  <meta name="description" content="<%= descripcion || 'Herramientas online para técnicos de redes y sistemas' %>">
+  
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- 🎨 Estilos globales -->
+  <link rel="stylesheet" href="/css/global/reset.css">
+  <link rel="stylesheet" href="/css/global/variables.css">
+  <link rel="stylesheet" href="/css/global/layout.css">
+  <link rel="stylesheet" href="/css/global/components.css">
+
+  <!-- 🧩 Estilos por sección -->
+  <% if (zona === 'public') { %>
+    <link rel="stylesheet" href="/css/sections/public/index.css">
+  <% } else if (zona === 'private') { %>
+    <link rel="stylesheet" href="/css/sections/private/dashboard.css">
+  <% } else if (zona === 'admin') { %>
+    <link rel="stylesheet" href="/css/sections/admin/panel.css">
+  <% } %>
+</head>

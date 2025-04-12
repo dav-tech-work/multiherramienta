@@ -1,0 +1,27 @@
+:root {
+    --bg-body: #ffffff;
+    --text-body: #000000;
+  
+    --color-primary: #003366;   /* azul accesible y serio */
+    --color-success: #1B5E20;
+    --color-error: #B71C1C;
+    --color-accent: #003366;
+  
+    --bg-section: #f2f2f2;
+    --border-soft: #cccccc;
+  }
+  
+  /* 🌙 Tema oscuro */
+  body.tema-oscuro {
+    --bg-body: #121212;
+    --text-body: #ffffff;
+  
+    --color-primary: #66B2FF;
+    --color-success: #81C784;
+    --color-error: #EF9A9A;
+    --color-accent: #66B2FF;
+  
+    --bg-section: #1e1e1e;
+    --border-soft: #333333;
+  }
+  

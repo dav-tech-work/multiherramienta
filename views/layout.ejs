@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" class="tema-oscuro">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body>
+
+  <!-- ✅ Cabecera -->
+  <%- include('partials/header') %>
+
+  <!-- ✅ Mensajes (flash, errores, alertas) -->
+  <%- include('partials/alerts') %>
+
+  <!-- ✅ Contenido dinámico de cada vista -->
+  <main>
+    <%- body %>
+  </main>
+
+  <!-- ✅ Pie de página -->
+  <%- include('partials/footer') %>
+
+  <!-- ✅ Scripts JS comunes -->
+  <%- include('partials/scripts') %>
+</body>
+</html>
+<!-- 
+  Este es el layout principal de la aplicación. 
+  Aquí se incluyen las partes comunes de todas las vistas, como el encabezado, pie de página y scripts.
+  El contenido específico de cada vista se inyecta en el <main> mediante <%- body %>.

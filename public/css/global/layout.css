@@ -1,0 +1,61 @@
+/* =============================
+   🎯 BASE LAYOUT GENERAL
+============================= */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    background-color: var(--bg-body, #ffffff);
+    color: var(--text-body, #111111);
+    min-height: 100%;
+  }
+  
+  /* Contenedor de la página principal */
+  main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  /* =============================
+     🌙 TEMA OSCURO
+  ============================= */
+  body.tema-oscuro {
+    --bg-body: #121212;
+    --text-body: #f1f1f1;
+  }
+  
+  /* =============================
+     🧩 ESTRUCTURA DE BLOQUES
+  ============================= */
+  section {
+    margin-bottom: 2rem;
+  }
+  
+  h1, h2, h3 {
+    color: var(--text-body);
+    line-height: 1.2;
+  }
+  
+  a {
+    color: var(--color-accent, #0077cc);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* =============================
+     🧪 UTILIDADES
+  ============================= */
+  .text-center {
+    text-align: center;
+  }
+  
+  .oculto {
+    display: none !important;
+  }
+  

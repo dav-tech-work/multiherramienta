@@ -1,0 +1,61 @@
+# 🔒 Seguridad
+.env
+*.key
+*.pem
+
+# 📦 Dependencias
+node_modules/
+
+# ⚙️ Archivos de build/cache
+dist/
+build/
+.cache/
+.temp/
+coverage/
+
+# 📂 Datos generados o sensibles
+logs/
+uploads/
+*.log
+*.gz
+*.zip
+*.bak
+*.tmp
+
+# 💻 Configuraciones locales de IDE/editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 🔁 Lockfiles (si no quieres comprometerlos)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# 💥 Archivos innecesarios
+.DS_Store
+Thumbs.db
+*.swp
+*.old
+*.orig
+*.export.*
+*.import.*
+
+# 📜 Archivos de documentación
+
+*.txt
+
+# 📦 Archivos de caché de paquetes
+*.tgz
+*.tar.gz    
+*.tar.xz
+*.tar.bz2
+
+# 📦 Archivos innecesarios de dependencias
+node_modules
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+uploads
+logs
