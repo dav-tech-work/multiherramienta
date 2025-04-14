@@ -30,3 +30,27 @@ export function validarTokenCSRF(tokenRecibido, tokenGuardado) {
     return false;
   }
 }
+
+/**
+ * Middleware para protección CSRF
+ */
+export function csrfProtection(req, res, next) {
+  // Generar token si no existe
+  if (!req.session.csrfToken) {
+    req.session.csrfToken = crypto.randomBytes(32).toString('hex');
+  }
+
+  // Exponer el token a las vistas
+  res.locals.csrfToken = req.session.csrfToken;
+
+  // Solo validar en POST/PUT/DELETE
+  if (['POST', 'PUT', 'DELETE'].includes(req.method)) {
+    const token = req.body._csrf || req.headers['x-csrf-token'];
+
+    if (!token || token !== req.session.csrfToken) {
+      return res.redirect('/error-csrf');
+    }
+  }
+
+  next();
+}

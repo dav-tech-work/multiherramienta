@@ -1,18 +1,24 @@
-<% layout('layout') -%>
-<section>
-    <h2>Escaneo LAN Básico</h2>
-    <form method="POST" action="/escaner-red">
-      <input type="text" name="rango" placeholder="Ej: 192.168.1.0/24" required>
-      <button type="submit">Escanear</button>
-    </form>
-  
-    <% if (resultado) { %>
-      <h3>Dispositivos detectados:</h3>
-      <ul>
-        <% resultado.forEach(ip => { %>
-          <li><%= ip %></li>
-        <% }) %>
-      </ul>
-    <% } %>
-  </section>
-  
+<% layout('layout') %>
+<section class="escaner-container">
+    <h2>Escáner LAN Básico</h2>
+    <div class="escaner-form-container">
+        <form id="escaner-form" class="escaner-form">
+            <div class="form-group">
+                <input type="text" name="rango" class="form-control" placeholder="Ej: 192.168.1.0/24" required>
+                <button type="submit" class="btn btn-primary">Escanear Red</button>
+            </div>
+        </form>
+
+        <div id="sugerencias" class="sugerencias-container mt-3">
+            <small class="text-muted mb-2 d-block">Rangos comunes:</small>
+        </div>
+    </div>
+
+    <div id="loading" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+    
+    <div id="resultado" class="resultado-container mt-4"></div>
+</section>
+
+<% block('scripts').append('<script src="./js/servicios/escaner.js" type="module"></script>') %>

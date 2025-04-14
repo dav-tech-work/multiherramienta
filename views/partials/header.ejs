@@ -1,55 +1,77 @@
-<header class="header">
+<header class="header" role="banner">
   <div class="contenedor-header">
     
     <!-- 🔷 Logo / Nombre del Proyecto -->
-    <a href="/" class="logo">SysTools</a>
+    <a href="/" class="logo" aria-label="SysTools - Ir a inicio">SysTools</a>
 
     <!-- 🔧 Navegación contextual -->
-    <nav class="menu-principal">
+    <nav class="menu-principal" role="navigation" aria-label="Menú principal">
       <!-- 🌍 Siempre disponibles (zona pública) -->
-      <a href="/ip">Ver IP</a>
-      <a href="/escaner-red">Escanear Red</a>
-      <a href="/whois">WHOIS</a>
-      <a href="/dns">DNS</a>
+      <a href="/ip" aria-label="Ver IP pública">Ver IP</a>
+      <a href="/escaner-red" aria-label="Herramienta de escaneo de red">Escanear Red</a>
+      <a href="/whois" aria-label="Consulta WHOIS">WHOIS</a>
+      <a href="/dns" aria-label="Consulta DNS">DNS</a>
     
       <!-- 🛠 Zona privada (si está logueado) -->
       <% if (typeof usuario !== 'undefined' && usuario) { %>
-        <a href="/panel">Dashboard</a>
-        <a href="/herramientas/nmap">Nmap</a>
-        <a href="/herramientas/nikto">Nikto</a>
-        <a href="/reportes">Reportes</a>
+        <a href="/panel" aria-label="Ir al panel de control">Dashboard</a>
+        <a href="/herramientas/nmap" aria-label="Herramienta Nmap">Nmap</a>
+        <a href="/herramientas/nikto" aria-label="Herramienta Nikto">Nikto</a>
+        <a href="/reportes" aria-label="Ver reportes">Reportes</a>
       <% } %>
     
       <!-- 🛡 Zona admin -->
       <% if (typeof usuario !== 'undefined' && usuario?.rol === 'admin') { %>
-        <a href="/admin/panel">Panel Admin</a>
-        <a href="/admin/usuarios">Usuarios</a>
-        <a href="/admin/logs">Logs</a>
-        <a href="/admin/config">Configuración</a>
+        <a href="/admin/panel" aria-label="Panel de administración">Panel Admin</a>
+        <a href="/admin/usuarios" aria-label="Gestión de usuarios">Usuarios</a>
+        <a href="/admin/logs" aria-label="Registros del sistema">Logs</a>
+        <a href="/admin/config" aria-label="Configuración del sistema">Configuración</a>
       <% } %>
     </nav>
 
     <!-- ⚙️ Controles del usuario -->
-    <div class="acciones-usuario">
-
+    <div class="acciones-usuario" role="group" aria-label="Controles de usuario">
       <!-- 🌐 Selector de idioma -->
-      <button id="selector-idioma" title="Idioma" aria-label="Seleccionar idioma">🌐</button>
+      <button id="selector-idioma" 
+              aria-label="Seleccionar idioma" 
+              aria-haspopup="true"
+              class="btn-control">
+        <span aria-hidden="true">🌐</span>
+        <span class="visually-hidden">Idioma</span>
+      </button>
 
       <!-- 🌓 Botón tema oscuro/claro -->
-      <button id="toggle-tema" title="Tema" aria-label="Cambiar tema">🌓</button>
+      <button class="theme-toggle" 
+              aria-label="Cambiar tema" 
+              aria-pressed="false"
+              type="button">
+        <i class="fa-solid fa-sun d-none" aria-hidden="true"></i>
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        <span class="visually-hidden">Alternar tema oscuro</span>
+      </button>
 
       <!-- 👤 Autenticación -->
       <% if (typeof usuario !== 'undefined' && usuario) { %>
-        <a href="<%= usuario.rol === 'admin' ? '/admin/panel' : '/panel' %>" class="btn-usuario">
-          <%= usuario.nombre %>
+        <a href="<%= usuario.rol === 'admin' ? '/admin/panel' : '/panel' %>" 
+           class="btn-usuario"
+           aria-label="Ir al panel de <%= usuario.nombre %>">
+          <span aria-hidden="true"><%= usuario.nombre %></span>
         </a>
         <form action="/logout" method="POST" class="logout-form">
-          <button type="submit" title="Cerrar sesión" class="btn-logout">⏻</button>
+          <button type="submit" 
+                  class="btn-logout" 
+                  aria-label="Cerrar sesión">
+            <span aria-hidden="true">⏻</span>
+            <span class="visually-hidden">Cerrar sesión</span>
+          </button>
         </form>
       <% } else { %>
-        <a href="/login" class="btn-login">Iniciar sesión</a>
+        <a href="/login" 
+           class="btn-login" 
+           aria-label="Iniciar sesión">
+          Iniciar sesión
+        </a>
       <% } %>
-
     </div>
   </div>
 </header>

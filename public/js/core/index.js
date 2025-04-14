@@ -1,26 +1,56 @@
+// Función para inicializar el tema
 function initTheme() {
-  const themeToggle = document.querySelector(".theme-toggle");
-  if (!themeToggle) return;
+    const themeToggle = document.querySelector(".theme-toggle");
+    if (!themeToggle) return;
 
-  const themeIcon = themeToggle.querySelector("i");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+    // Obtener los iconos
+    const sunIcon = themeToggle.querySelector(".fa-sun");
+    const moonIcon = themeToggle.querySelector(".fa-moon");
+    
+    function setTheme(isDark) {
+        document.documentElement.classList.toggle("tema-oscuro", isDark);
+        themeToggle.setAttribute("aria-pressed", isDark);
+        localStorage.setItem("tema", isDark ? "oscuro" : "claro");
+        
+        // Actualizar iconos
+        if (isDark) {
+            moonIcon?.classList.add("d-none");
+            sunIcon?.classList.remove("d-none");
+        } else {
+            sunIcon?.classList.add("d-none");
+            moonIcon?.classList.remove("d-none");
+        }
+    }
 
-  const setTheme = (theme) => {
-    const html = document.documentElement;
-    html.setAttribute("data-bs-theme", theme);
-    themeIcon.classList.toggle("fa-moon", theme === "light");
-    themeIcon.classList.toggle("fa-sun", theme === "dark");
-    localStorage.setItem("theme", theme);
-  };
+    // Cargar tema guardado o usar preferencia del sistema
+    const savedTheme = localStorage.getItem("tema");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+    
+    if (savedTheme) {
+        setTheme(savedTheme === "oscuro");
+    } else {
+        setTheme(prefersDark.matches);
+    }
 
-  const saved = localStorage.getItem("theme");
-  if (saved) setTheme(saved);
-  else if (prefersDark.matches) setTheme("dark");
+    // Escuchar cambios en el botón de tema
+    themeToggle.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.contains("tema-oscuro");
+        setTheme(!isDark);
+    });
 
-  themeToggle.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-bs-theme");
-    setTheme(current === "dark" ? "light" : "dark");
-  });
+    // Escuchar cambios en la preferencia del sistema
+    prefersDark.addEventListener("change", (e) => {
+        if (!localStorage.getItem("tema")) {
+            setTheme(e.matches);
+        }
+    });
+}
+
+// Inicializar cuando el DOM esté listo
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initTheme);
+} else {
+    initTheme();
 }
 
 export { initTheme };

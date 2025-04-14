@@ -1,0 +1,39 @@
+/* Contenedor principal WHOIS */
+.whois-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.whois-form {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2rem;
+}
+
+.whois-form .form-group {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .whois-form .form-group {
+        grid-template-columns: 1fr;
+    }
+}
+
+.whois-result {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    background: var(--bg-code);
+    padding: 1rem;
+    border-radius: 4px;
+    color: var(--color-text);
+    max-height: 500px;
+    overflow-y: auto;
+}

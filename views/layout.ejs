@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="es" class="tema-oscuro">
+<html lang="es">
 <head>
   <%- include('partials/head') %>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
   <!-- ✅ Cabecera -->
   <%- include('partials/header') %>
 
   <!-- ✅ Mensajes (flash, errores, alertas) -->
-  <%- include('partials/alerts') %>
+  <div role="alert" aria-live="polite">
+    <%- include('partials/alerts') %>
+  </div>
 
   <!-- ✅ Contenido dinámico de cada vista -->
-  <main>
-    <%- body %>
+  <main id="main-content" tabindex="-1">
+    <%- body -%>
   </main>
 
   <!-- ✅ Pie de página -->
@@ -21,6 +24,11 @@
 
   <!-- ✅ Scripts JS comunes -->
   <%- include('partials/scripts') %>
+  
+  <!-- Scripts específicos de la página -->
+  <% if (typeof block !== 'undefined') { -%>
+    <%- block('scripts') %>
+  <% } -%>
 </body>
 </html>
 <!-- 

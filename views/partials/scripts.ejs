@@ -1,3 +1,23 @@
+<!-- 🎯 Scripts principales -->
 <script src="/js/core/index.js" type="module"></script>
+
+<!-- 🎨 Scripts de UI -->
 <script src="/js/ui/navegacion.js" type="module"></script>
 <script src="/js/ui/search.js" type="module"></script>
+
+<!-- 🔧 Scripts de configuración -->
+<script src="/js/config/index.js" type="module"></script>
+
+<!-- 📚 Librerías externas -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+    crossorigin=""></script>
+
+<!-- 🎨 Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+
+<script type="module">
+  // Importar y ejecutar la inicialización del tema
+  import { initTheme } from '/js/core/index.js';
+  initTheme();
+</script>

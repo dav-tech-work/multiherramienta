@@ -32,4 +32,13 @@ router.post('/whois', procesarWhois);
 router.get('/dns', mostrarDNS);
 router.post('/dns', procesarDNS);
 
+// ⚠️ Error CSRF
+router.get('/error-csrf', (req, res) => {
+  res.render('paginas/public/error-csrf', {
+    titulo: 'Error de Seguridad',
+    descripcion: 'Se ha detectado un problema con el token CSRF',
+    zona: 'public'
+  });
+});
+
 export default router;

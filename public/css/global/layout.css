@@ -7,55 +7,79 @@ html, body {
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
-    background-color: var(--bg-body, #ffffff);
-    color: var(--text-body, #111111);
-    min-height: 100%;
-  }
+    background-color: var(--bg-body);
+    color: var(--color-text);
+    min-height: 100vh;
+}
   
-  /* Contenedor de la página principal */
-  main {
+/* Contenedor de la página principal */
+main {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
-  }
-  
-  /* =============================
-     🌙 TEMA OSCURO
-  ============================= */
-  body.tema-oscuro {
+    min-height: calc(100vh - 200px); /* Altura mínima considerando header y footer */
+}
+
+/* =============================
+   🌙 TEMA OSCURO
+============================= */
+body.tema-oscuro {
     --bg-body: #121212;
     --text-body: #f1f1f1;
-  }
-  
-  /* =============================
-     🧩 ESTRUCTURA DE BLOQUES
-  ============================= */
-  section {
+}
+
+/* =============================
+   🧩 ESTRUCTURA DE BLOQUES
+============================= */
+section {
     margin-bottom: 2rem;
-  }
-  
-  h1, h2, h3 {
-    color: var(--text-body);
-    line-height: 1.2;
-  }
-  
-  a {
+    background-color: var(--bg-primary);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+}
+
+h1, h2, h3 {
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+a {
     color: var(--color-accent, #0077cc);
     text-decoration: none;
-  }
-  
-  a:hover {
+}
+
+a:hover {
     text-decoration: underline;
-  }
-  
-  /* =============================
-     🧪 UTILIDADES
-  ============================= */
-  .text-center {
+}
+
+/* =============================
+   🧪 UTILIDADES
+============================= */
+.text-center {
     text-align: center;
-  }
-  
-  .oculto {
+}
+
+.oculto {
     display: none !important;
-  }
-  
+}
+
+/* =============================
+   📱 RESPONSIVE
+============================= */
+@media (max-width: 768px) {
+    main {
+        margin: 1rem auto;
+        padding: 0 0.5rem;
+    }
+
+    section {
+        padding: 1rem;
+    }
+}

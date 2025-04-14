@@ -1,19 +1,26 @@
-<% layout('layout') -%>
-<section>
+<% layout('layout') %>
+<section class="dns-container">
     <h2>Herramientas DNS</h2>
-    <form method="POST" action="/dns">
-      <input type="text" name="dominio" placeholder="Ej: google.com" required>
-      <select name="tipo">
-        <option value="A">A</option>
-        <option value="MX">MX</option>
-        <option value="NS">NS</option>
-        <option value="TXT">TXT</option>
-      </select>
-      <button type="submit">Consultar</button>
+    <form id="dns-form" class="dns-form">
+        <div class="form-group">
+            <input type="text" name="dominio" class="form-control" placeholder="Ej: google.com" required>
+            <select name="tipo" class="form-control">
+                <option value="A">A (IPv4)</option>
+                <option value="AAAA">AAAA (IPv6)</option>
+                <option value="MX">MX (Correo)</option>
+                <option value="NS">NS (Servidores de nombres)</option>
+                <option value="TXT">TXT (Registros de texto)</option>
+                <option value="SOA">SOA (Inicio de autoridad)</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Consultar</button>
+        </div>
     </form>
-  
-    <% if (resultado) { %>
-      <pre><%= resultado %></pre>
-    <% } %>
-  </section>
-  
+
+    <div id="loading" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+    
+    <div id="resultado" class="resultado-container"></div>
+</section>
+
+<% block('scripts').append('<script src="./js/servicios/dns.js" type="module"></script>') %>

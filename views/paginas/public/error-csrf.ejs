@@ -1,0 +1,48 @@
+<% layout('layout') -%>
+<section class="error-container">
+    <div class="error-content">
+        <h2>Error de Seguridad</h2>
+        <p>Se ha detectado un problema de seguridad con tu solicitud (Token CSRF inválido).</p>
+        <p>Esto puede ocurrir por:</p>
+        <ul>
+            <li>La página ha expirado</li>
+            <li>Estás usando múltiples pestañas</li>
+            <li>Tu sesión ha caducado</li>
+        </ul>
+        <div class="error-actions">
+            <a href="javascript:history.back()" class="btn btn-secondary">Volver</a>
+            <a href="/" class="btn btn-primary">Ir al Inicio</a>
+        </div>
+    </div>
+</section>
+
+<style>
+.error-container {
+    padding: 2rem;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.error-content {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}
+
+.error-content h2 {
+    color: var(--color-error);
+    margin-bottom: 1rem;
+}
+
+.error-content ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.error-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+</style>
