@@ -1,0 +1,17 @@
+<% layout('layout') -%>
+<section>
+    <h2>Tu IP Pública</h2>
+    <p id="ip">Cargando IP...</p>
+  </section>
+  
+  <script type="module">
+    fetch('/api/ip')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('ip').textContent = data.ip || 'No detectada';
+      })
+      .catch(err => {
+        document.getElementById('ip').textContent = 'Error al obtener IP';
+      });
+  </script>
+  

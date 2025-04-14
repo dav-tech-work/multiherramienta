@@ -7,7 +7,12 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 
-import routes from './routes/index.mjs';
+import routes from './routes/public.mjs';
+import engine from 'ejs-mate';
+import { aplicarDatosPorDefecto } from './middlewares/defaultMeta.mjs';
+;
+
+
 
 const app = express();
 
@@ -25,6 +30,7 @@ app.use(cookieParser());
 // 🔠 Body parsers con límites definidos en la config
 app.use(express.json({ limit: config.LIMITS.JSON }));
 app.use(express.urlencoded({ extended: true, limit: config.LIMITS.URLENCODED }));
+app.engine('ejs', engine);
 
 // 🚨 Limitador de peticiones para proteger de abusos
 app.use(rateLimit({
@@ -42,7 +48,11 @@ app.use(express.static(config.PUBLIC, {
 app.set('views', path.join(config.ROOT, 'views'));
 app.set('view engine', 'ejs');
 
-// 🌍 Rutas principales montadas
+// ✅ Middleware de metadatos por defecto
+app.use(aplicarDatosPorDefecto);
+
+// 🌍 Rutas públicas, privadas y admin (por ahora solo públicas)
 app.use('/', routes);
+
 
 export default app;

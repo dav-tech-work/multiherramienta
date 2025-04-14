@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import homeRoutes from './home.mjs';
-import privateRoutes from './protegidas.mjs';
+import homeRoutes from './public.mjs';
+import protegidasRoutes from './protegidas.mjs';
 import testRoutes from './test.mjs';
 
 import contactoApi from './api/contacto.mjs';
@@ -12,8 +12,9 @@ const router = Router();
 // 🌐 Rutas públicas
 router.use('/', homeRoutes);
 
-// 🔐 Rutas privadas (requieren autenticación)
-router.use('/private', privateRoutes);
+// 🔐 Rutas privadas y admin
+router.use('/private', protegidasRoutes);
+router.use('/admin', protegidasRoutes);
 
 // 🧪 Rutas de prueba/debug
 router.use('/test', testRoutes);

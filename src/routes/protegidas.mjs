@@ -1,32 +1,29 @@
-import express from "express";
+import express from 'express';
+import rutasPrivadas from './private.mjs';
+import rutasAdmin from './admin.mjs';
+
 const router = express.Router();
 
-// Middleware simulado de autenticación
-function requireAuth(req, res, next) {
-  const autenticado = false; // 🔐 Sustituir por lógica real (JWT, sesión, etc.)
+// 🔐 Middleware general para rutas protegidas (simulado)
+const requireAuth = (req, res, next) => {
+  const autenticado = true; // Sustituir con lógica real de sesión, JWT, etc.
 
   if (!autenticado) {
-    return res.status(403).render("paginas/403", {
-      titulo: "Acceso Denegado",
-      tipo: "error",
+    return res.status(403).render('paginas/public/acceso_denegado', {
+      titulo: 'Acceso Denegado',
+      tipo: 'error',
       idioma: req.idioma,
       t: req.traducciones,
-      mensaje: "🔒 Necesitas estar autenticado para acceder a esta sección."
+      mensaje: '🔒 Necesitas estar autenticado para acceder a esta sección.'
     });
   }
-
   next();
-}
+};
 
-// Ruta protegida
-router.get("/zona-secreta", requireAuth, (req, res) => {
-  res.render("paginas/zona-secreta", {
-    titulo: req.traducciones?.secreto || "Zona Secreta",
-    tipo: "protegida",
-    idioma: req.idioma,
-    t: req.traducciones,
-    csrfToken: req.csrfToken
-  });
-});
+// 🔐 Monta rutas privadas
+router.use('/private', requireAuth, rutasPrivadas);
+
+// 🛡 Monta rutas admin
+router.use('/admin', requireAuth, rutasAdmin);
 
 export default router;

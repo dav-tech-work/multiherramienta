@@ -1,0 +1,13 @@
+<% layout('layout') -%>
+<section>
+    <h2>Consulta WHOIS</h2>
+    <form method="POST" action="/whois">
+      <input type="text" name="dominio" placeholder="Ej: example.com" required>
+      <button type="submit">Consultar</button>
+    </form>
+  
+    <% if (resultado) { %>
+      <pre><%= resultado %></pre>
+    <% } %>
+  </section>
+  

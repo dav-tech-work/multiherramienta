@@ -1,0 +1,19 @@
+<% layout('layout') -%>
+<section>
+    <h2>Herramientas DNS</h2>
+    <form method="POST" action="/dns">
+      <input type="text" name="dominio" placeholder="Ej: google.com" required>
+      <select name="tipo">
+        <option value="A">A</option>
+        <option value="MX">MX</option>
+        <option value="NS">NS</option>
+        <option value="TXT">TXT</option>
+      </select>
+      <button type="submit">Consultar</button>
+    </form>
+  
+    <% if (resultado) { %>
+      <pre><%= resultado %></pre>
+    <% } %>
+  </section>
+  

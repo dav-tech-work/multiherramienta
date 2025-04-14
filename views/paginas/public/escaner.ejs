@@ -1,0 +1,18 @@
+<% layout('layout') -%>
+<section>
+    <h2>Escaneo LAN Básico</h2>
+    <form method="POST" action="/escaner-red">
+      <input type="text" name="rango" placeholder="Ej: 192.168.1.0/24" required>
+      <button type="submit">Escanear</button>
+    </form>
+  
+    <% if (resultado) { %>
+      <h3>Dispositivos detectados:</h3>
+      <ul>
+        <% resultado.forEach(ip => { %>
+          <li><%= ip %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+  </section>
+  
